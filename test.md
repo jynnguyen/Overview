@@ -1,12 +1,12 @@
 # Module 1.1: Predicate Specification
 
 ## 1. Domains and Sets
-* $I$: Set of Invigilators; $I = \{i_1, i_2, i_3, \dots\}$
+* $I$: Set of Invigilators; $I = \{i_1, i_2, i_3, \dots\}$ (Only CBCT is considered invigilators)
 * $J$: Set of Shifts; $J = \{j_1, j_2, j_3, \dots\}$
 * $C$: Set of Campuses; $C = \{\text{CS1}, \text{CS2}\}$
 
 ## 2. Functions
-* $R(j)$: Number of invigilators required for shift $j$; $R(j) \in \mathbb{Z}^+$
+* $Cap(j)$: Number of invigilators required for shift $j$; $R(j) \in \mathbb{Z}^+$
 
 ## 3. Predicates
 * $\text{Assign}(i, j)$: Invigilator $i$ is assigned to shift $j$.
@@ -22,7 +22,7 @@
 ### 4.1 Shift Capacity
 * **Formal Language:**
   $$\forall j \in J, \; \exists i_1, \dots, i_{R(j)} \in I : \left( \bigwedge_{1 \le a < b \le R(j)} i_a \ne i_b \right) \wedge \forall h \in I, \left( \text{Assign}(i, j) \longleftrightarrow \bigvee_{m=1}^{R(j)} h = i_m \right)$$
-* **Natural Language:** For every shift $j \in J$, there exist $R(j)$ distinct invigilators $i_1, \dots, i_{R(j)} \in I$, and an invigilator $i \in I$ is assigned to shift $j$ if and only if $i$ is one of these $R(j)$ invigilators.
+* **Natural Language:** For every shift $j \in J$, there exist $Cap(j)$ distinct invigilators $i_1, \dots, i_{R(j)} \in I$, and an invigilator $i \in I$ is assigned to shift $j$ if and only if $i$ is one of these $Cap(j)$ invigilators.
 * **Explanation (VN):** Mỗi ca thi phải có đủ và đúng chính xác số lượng giám thị được yêu cầu, không thừa không thiếu.
 
 ### 4.2 No Double-Booking
