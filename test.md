@@ -1,9 +1,9 @@
 # Module 1.1: Predicate Specification
 
 ## 1. Domains and Sets
-* $I$: Set of Invigilators; $I = \{i_1, i_2, i_3, \dots\}$ (Only CBCT is considered invigilators)
-* $J$: Set of Shifts; $J = \{j_1, j_2, j_3, \dots\}$
-* $C$: Set of Campuses; $C = \{\text{CS1}, \text{CS2}\}$
+* $I$: Set of Invigilators; $I = \{i_1, i_2, i_3, \dots\}$ (Only CBCTs are considered invigilators)
+* $J$: Set of Shifts; $J = {j_1, j_2, j_3, \dots}$
+* $C$: Set of Campuses; $C = {\text{CS1}, \text{CS2}}$
 
 ## 2. Functions
 * $Cap(j)$: Number of invigilators required for shift $j$; $Cap(j) \in \mathbb{Z}^+$
