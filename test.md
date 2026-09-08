@@ -22,7 +22,7 @@
 ### 4.1 Shift Capacity
 * **Formal Language:**
   $$\forall j \in J, \; \exists i_1, \dots, i_{Cap(j)} \in I : \left( \bigwedge_{1 \le a < b \le Cap(j)} i_a \ne i_b \right) \wedge \forall h \in I, \left( \text{Assign}(h, j) \longleftrightarrow \bigvee_{m=1}^{Cap(j)} h = i_m \right)$$
-* **Natural Language:** For every shift $j \in J$, there exist $Cap(j)$ distinct invigilators $i_1, \dots, i_{Cap(j)} \in I$, and an invigilator $i \in I$ is assigned to shift $j$ if and only if $i$ is one of these $Cap(j)$ invigilators.
+* **Natural Language:** For every shift $j \in J$, there exist $Cap(j)$ distinct invigilators $i_1, \dots, i_{Cap(j)} \in I$, and an invigilator $h$ \in I$ is assigned to shift $j$ if and only if $h$ is one of these $Cap(j)$ invigilators.
 * **Explanation (VN):** Mỗi ca thi phải có đủ và đúng chính xác số lượng giám thị được yêu cầu, không thừa không thiếu.
 
 ### 4.2 No Double-Booking
