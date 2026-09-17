@@ -1,4 +1,7 @@
-## 2. Predicate Specification (Req 1.1)
+## 1.1. Predicate Specification
+This section defines the domains, functions, predicates, and hard constraints for exam invigilator assignment
+* **Domains and sets:** * $I$: Set of Invigilators, * $J$: Set of Shifts, * $C$: Set of Campuses
+* **Functions:** * $Cap(j)$
 * **Predicates:** $\text{Assign}(i,j)$, $\text{Busy}(i,j)$, $\text{Overlap}(j,k)$, $\text{Consecutive}(j,k)$, $\text{AtCampus}(j,c)$, $\text{Prefer}(i,c)$].
 * **Hard Rules:**
   * **Capacity:** Each exam shift must be assigned exactly its required number of distinct invigilators.
