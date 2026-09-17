@@ -1,38 +1,7 @@
-# Module 1.1: Predicate Specification
-
-## 1. Domains and Sets
-* $I$: Set of Invigilators; $I = \lbrace i_1, i_2, i_3, \dots \rbrace$ (Only CBCT is considered invigilator)
-* $J$: Set of Shifts; $J = \lbrace j_1, j_2, j_3, \dots \rbrace$
-* $C$: Set of Campuses; $C = \lbrace \text{CS1}, \text{CS2} \rbrace$
-
-## 2. Functions
-* $Cap(j)$: Number of invigilators required for shift $j$; $Cap(j) \in \mathbb{Z}^+$
-
-## 3. Predicates
-* $\text{Assign}(i, j)$: Invigilator $i$ is assigned to shift $j$.
-* $\text{Busy}(i, j)$: Invigilator $i$ is unavailable during shift $j$.
-* $\text{Overlap}(j, k)$: Shifts $j$ and $k$ occur at the same time.
-* $\text{AtCampus}(j, c)$: Shift $j$ takes place at campus $c$.
-* $\text{Prefer}(i, c)$: Invigilator $i$ prefers to be at campus $c$.
----
-
-## 4. Hard Constraints (First-Order Logic)
-
-### 4.1 Shift Capacity
-* **Formal Language:**
-  $$\forall j \in J, \; \exists i_1, \dots, i_{Cap(j)} \in I : \left( \bigwedge_{1 \le a < b \le Cap(j)} i_a \ne i_b \right) \wedge \left(\forall h \in I,  \text{ Assign}(h, j) \longleftrightarrow \bigvee_{m=1}^{Cap(j)} h = i_m \right)$$
-* **Natural Language:** For every shift $j \in J$, there exist $Cap(j)$ distinct invigilators $i_1, \dots, i_{Cap(j)} \in I$, and an invigilator $i \in I$ is assigned to shift $j$ if and only if invigilator $i$ is one of these $Cap(j)$ invigilators.
-
-### 4.2 No Double-Booking
-* **Formal Language:**
-  $$\forall i \in I, \; \forall j, k \in J : \left( j \ne k \wedge \text{Overlap}(j, k) \wedge \text{Assign}(i, j) \longrightarrow \neg \text{Assign}(i, k) \right)$$
-* **Natural Language:** For every invigilator $i \in I$ and every pair of distinct shifts $j, k \in J$, if shifts $j$, $k$ overlap and invigilator $i$ is assigned to shift $j$, then invigilator $i$ cannot be assigned to shift $k$.
-
-### 4.3 Availability
-* **Formal Language:**
-  $$\forall i \in I, \; \forall j \in J : \left( \text{Busy}(i, j) \longrightarrow \neg \text{Assign}(i, j) \right)$$
-* **Natural Language:** For every invigilator $i \in I$ and every shift $j \in J$, if invigilator $i$ is busy during shift $j$, then invigilator $i$ cannot be assigned to shift $j$.
-
-### 4.4 No Consecutive Shifts Between Two Campuses
-* **Formal Language:** $$\forall i \in I, \; \forall j, k \in J, \; \forall c_1, c_2 \in C : \left( (j \ne k) \wedge \text{Assign}(i, j) \wedge \text{Consecutive}(j, k) \wedge \text{AtCampus}(j, c_1) \wedge \text{AtCampus}(k, c_2) \wedge (c_1 \ne c_2) \longrightarrow \neg \text{Assign}(i, k) \right)$$
-* **Natural Language:** For every invigilator $i \in I$, every pair of distinct shifts $j, k \in J$, and every pair of distinct campuses $c_1, c_2 \in C$ ($c_1 \ne c_2$), if invigilator $i$ is assigned to shift $j$, shifts $j, k$ occur consecutively, shift $j$ takes place at campus $c_1$, and shift $k$ takes place at campus $c_2$, then invigilator $i$ can't be assigned to shift $k$.
+## 2. Predicate Specification (Req 1.1)
+* **Predicates:** $\text{Assign}(i,j)$, $\text{Busy}(i,j)$, $\text{Overlap}(j,k)$, $\text{Consecutive}(j,k)$, $\text{AtCampus}(j,c)$, $\text{Prefer}(i,c)$[cite: 2, 3].
+* **Hard Rules:**
+  * **No Double-Booking:** An invigilator cannot be assigned to two distinct shifts that overlap in time[cite: 2, 3].
+  * **Availability:** An invigilator cannot be assigned to any shift during which they are marked as busy[cite: 2, 3].
+  * **Capacity:** Each exam shift must be assigned exactly its required quota of distinct invigilators[cite: 3].
+  * **No Consecutive Shifts Between Different Campuses:** An invigilator cannot be assigned to two consecutive shifts that take place at different campuses due to travel time constraints.
